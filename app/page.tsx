@@ -4,6 +4,7 @@ import { useAuth } from "@/components/auth-provider"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 import { Loader2 } from "lucide-react"
+import LandingPage from "@/components/landing-page"
 
 export default function HomePage() {
   const { user, isLoading } = useAuth()
@@ -12,14 +13,11 @@ export default function HomePage() {
   useEffect(() => {
     const handleRedirect = async () => {
       try {
-        if (!isLoading) {
+        if (!isLoading && user) {
           console.log("User state:", user)
           console.log("Profile complete:", user?.profile_complete)
           
-          if (!user) {
-            console.log("No user, redirecting to signin")
-            router.push("/auth/signin")
-          } else if (!user.profile_complete) {
+          if (!user.profile_complete) {
             console.log("Profile not complete, redirecting to setup")
             router.push("/profile/setup")
           } else {
@@ -38,8 +36,7 @@ export default function HomePage() {
         }
       } catch (error) {
         console.error("Navigation error:", error)
-        // Fallback to signin page on error
-        router.push("/auth/signin")
+        // Don't redirect on error, just show landing page
       }
     }
 
@@ -54,5 +51,15 @@ export default function HomePage() {
     )
   }
 
-  return null
+  // Show landing page for non-authenticated users
+  if (!user) {
+    return <LandingPage />
+  }
+
+  // Show loading while redirecting authenticated users
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <Loader2 className="h-8 w-8 animate-spin" />
+    </div>
+  )
 }

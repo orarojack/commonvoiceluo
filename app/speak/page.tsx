@@ -50,23 +50,30 @@ export default function SpeakPage() {
       setIsLoadingSentences(true)
       setApiError(null)
       
-      // Get sentences from local database
-      const { data: sentencesData, error } = await supabase
-        .from('sentences')
-        .select('text')
-        .eq('is_active', true)
-        .eq('language_code', 'luo')
-        .limit(50)
-        .order('id', { ascending: true })
-
-      if (error) {
-        throw new Error(`Database error: ${error.message}`)
+      if (!user?.id) {
+        throw new Error('User not authenticated')
       }
 
-      const sentences = sentencesData.map(sentence => sentence.text)
+      // Get sentences available for this specific user (excludes already recorded + sentences with 3 recordings)
+      const sentences = await db.getAvailableSentencesForUser(user.id)
       
       if (sentences.length === 0) {
-        throw new Error('No sentences found in database')
+        toast({
+          title: "No Sentences Available",
+          description: "You've recorded all available sentences or all sentences have reached their limit (3 recordings each).",
+          variant: "destructive",
+        })
+        
+        // Use fallback sentences for testing
+        const fallbackSentences = [
+          "Neno mar Luo ni neno mokworo mag piny Kenya.",
+          "Kisumo ni kibanda makare ma nyangaf kuom Luo.",
+          "Pesa ni pesa mokworo mag Luo mar Kenya.",
+        ]
+        
+        setAvailableSentences(fallbackSentences)
+        setCurrentSentence(fallbackSentences[0])
+        return
       }
 
       setAvailableSentences(sentences)
@@ -74,7 +81,7 @@ export default function SpeakPage() {
       
       toast({
         title: "Sentences Loaded",
-        description: `Loaded ${sentences.length} sentences from database`,
+        description: `Loaded ${sentences.length} available sentences`,
       })
     } catch (error) {
       console.error('Failed to load sentences from database:', error)
@@ -138,36 +145,28 @@ export default function SpeakPage() {
     try {
       setApiError(null)
       
-      // Get more sentences from database, excluding ones already loaded
-      const currentSentenceIds = new Set(availableSentences)
-      
-      const { data: sentencesData, error } = await supabase
-        .from('sentences')
-        .select('text')
-        .eq('is_active', true)
-        .eq('language_code', 'luo')
-        .limit(20)
-        .order('id', { ascending: true })
-
-      if (error) {
-        throw new Error(`Database error: ${error.message}`)
+      if (!user?.id) {
+        throw new Error('User not authenticated')
       }
-
-      const allNewSentences = sentencesData.map(sentence => sentence.text)
-      // Filter out sentences that are already in the current array
-      const newSentences = allNewSentences.filter(sentence => !currentSentenceIds.has(sentence))
+      
+      // Get fresh available sentences for this user
+      const sentences = await db.getAvailableSentencesForUser(user.id)
+      
+      // Filter out sentences already in the current array
+      const currentSentenceIds = new Set(availableSentences)
+      const newSentences = sentences.filter(sentence => !currentSentenceIds.has(sentence))
       
       if (newSentences.length > 0) {
         setAvailableSentences(prev => [...prev, ...newSentences])
         
         toast({
           title: "More Sentences Loaded",
-          description: `Added ${newSentences.length} more sentences from database`,
+          description: `Added ${newSentences.length} more available sentences`,
         })
       } else {
         toast({
           title: "All Sentences Loaded",
-          description: "You've seen all available sentences!",
+          description: "You've loaded all sentences you can record!",
         })
       }
     } catch (error) {
@@ -286,9 +285,31 @@ export default function SpeakPage() {
 
     setIsSubmitting(true)
     try {
-      // For now, store the audio as a data URL to avoid storage issues
-      // In production, you would upload to Supabase Storage
+      // Check if user can still record this sentence
+      const canRecord = await db.canUserRecordSentence(user.id, currentSentence)
       
+      if (!canRecord) {
+        toast({
+          title: "Cannot Record This Sentence",
+          description: "You've already recorded this sentence, or it has reached its limit (3 recordings). Moving to next sentence.",
+          variant: "destructive",
+        })
+        
+        // Remove this sentence from available sentences and move to next
+        const filteredSentences = availableSentences.filter(s => s !== currentSentence)
+        setAvailableSentences(filteredSentences)
+        
+        if (filteredSentences.length > 0) {
+          const nextSentence = filteredSentences[Math.floor(Math.random() * filteredSentences.length)]
+          setCurrentSentence(nextSentence)
+        }
+        
+        resetRecording()
+        setIsSubmitting(false)
+        return
+      }
+
+      // Convert audio blob to data URL
       const reader = new FileReader()
       const audioDataUrl = await new Promise<string>((resolve, reject) => {
         reader.onload = () => {
@@ -326,13 +347,22 @@ export default function SpeakPage() {
         description: "Recording submitted successfully!",
       })
 
+      // Remove current sentence from available sentences (since user has now recorded it)
+      const remainingSentences = availableSentences.filter(s => s !== currentSentence)
+      setAvailableSentences(remainingSentences)
+
       // Move to next sentence only after successful submission
-      if (availableSentences.length > 0) {
-        const nextIndex = Math.floor(Math.random() * availableSentences.length)
-        const nextSentence = availableSentences[nextIndex]
+      if (remainingSentences.length > 0) {
+        const nextIndex = Math.floor(Math.random() * remainingSentences.length)
+        const nextSentence = remainingSentences[nextIndex]
         setCurrentSentence(nextSentence)
         setSentenceHistory(prev => [...prev, currentSentence])
         setCurrentSentenceIndex(prev => prev + 1)
+      } else {
+        toast({
+          title: "All Done!",
+          description: "You've recorded all available sentences. Great work!",
+        })
       }
       
       setSentenceCount((prev) => prev + 1)

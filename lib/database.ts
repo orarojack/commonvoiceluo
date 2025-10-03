@@ -884,7 +884,155 @@ class SupabaseDatabase {
     }
   }
 
+  // Get available sentences for a specific user (excluding already recorded + those with 3 recordings)
+  async getAvailableSentencesForUser(userId: string): Promise<string[]> {
+    try {
+      if (!userId || !isValidUUID(userId)) {
+        return []
+      }
+
+      // Get all active sentences
+      const { data: allSentences, error: sentencesError } = await supabase
+        .from('sentences')
+        .select('text')
+        .eq('is_active', true)
+        .eq('language_code', 'luo')
+
+      if (sentencesError) {
+        console.error("Error fetching sentences:", sentencesError)
+        throw new Error(`Failed to fetch sentences: ${sentencesError.message}`)
+      }
+
+      if (!allSentences || allSentences.length === 0) {
+        return []
+      }
+
+      // Get all recordings to check limits
+      const { data: allRecordings, error: recordingsError } = await supabase
+        .from('recordings')
+        .select('sentence, user_id')
+
+      if (recordingsError) {
+        console.error("Error fetching recordings:", recordingsError)
+        throw new Error(`Failed to fetch recordings: ${recordingsError.message}`)
+      }
+
+      const recordings = allRecordings || []
+
+      // Count recordings per sentence
+      const sentenceRecordingCounts: Record<string, Set<string>> = {}
+      
+      recordings.forEach(recording => {
+        if (!sentenceRecordingCounts[recording.sentence]) {
+          sentenceRecordingCounts[recording.sentence] = new Set()
+        }
+        sentenceRecordingCounts[recording.sentence].add(recording.user_id)
+      })
+
+      // Filter sentences
+      const availableSentences = allSentences
+        .map(s => s.text)
+        .filter(sentence => {
+          const recordedByUsers = sentenceRecordingCounts[sentence]
+          
+          // Exclude if user already recorded this sentence
+          if (recordedByUsers && recordedByUsers.has(userId)) {
+            return false
+          }
+          
+          // Exclude if 3 or more different users already recorded this sentence
+          if (recordedByUsers && recordedByUsers.size >= 3) {
+            return false
+          }
+          
+          return true
+        })
+
+      console.log(`Available sentences for user ${userId}:`, {
+        totalSentences: allSentences.length,
+        availableForUser: availableSentences.length,
+        alreadyRecorded: allSentences.length - availableSentences.length
+      })
+
+      return availableSentences
+    } catch (error) {
+      console.error("Error in getAvailableSentencesForUser:", error)
+      return []
+    }
+  }
+
+  // Check if a user can record a specific sentence
+  async canUserRecordSentence(userId: string, sentence: string): Promise<boolean> {
+    try {
+      if (!userId || !isValidUUID(userId)) {
+        return false
+      }
+
+      // Check if user already recorded this sentence
+      const { data: userRecording, error: userError } = await supabase
+        .from('recordings')
+        .select('id')
+        .eq('user_id', userId)
+        .eq('sentence', sentence)
+        .limit(1)
+
+      if (userError) {
+        console.error("Error checking user recording:", userError)
+        return false
+      }
+
+      // If user already recorded this sentence, return false
+      if (userRecording && userRecording.length > 0) {
+        return false
+      }
+
+      // Check total number of unique users who recorded this sentence
+      const { data: allRecordings, error: recordingsError } = await supabase
+        .from('recordings')
+        .select('user_id')
+        .eq('sentence', sentence)
+
+      if (recordingsError) {
+        console.error("Error checking sentence recordings:", recordingsError)
+        return false
+      }
+
+      // Count unique users
+      const uniqueUsers = new Set(allRecordings?.map(r => r.user_id) || [])
+      
+      // Allow if less than 3 unique users have recorded this sentence
+      return uniqueUsers.size < 3
+    } catch (error) {
+      console.error("Error in canUserRecordSentence:", error)
+      return false
+    }
+  }
+
+  // Get sentence recording statistics
+  async getSentenceStats(sentence: string): Promise<{ totalRecordings: number, uniqueContributors: number }> {
+    try {
+      const { data, error } = await supabase
+        .from('recordings')
+        .select('user_id')
+        .eq('sentence', sentence)
+
+      if (error) {
+        console.error("Error getting sentence stats:", error)
+        return { totalRecordings: 0, uniqueContributors: 0 }
+      }
+
+      const recordings = data || []
+      const uniqueUsers = new Set(recordings.map(r => r.user_id))
+
+      return {
+        totalRecordings: recordings.length,
+        uniqueContributors: uniqueUsers.size
+      }
+    } catch (error) {
+      console.error("Error in getSentenceStats:", error)
+      return { totalRecordings: 0, uniqueContributors: 0 }
+    }
+  }
 }
 
-// Singleton instance
 export const db = new SupabaseDatabase()
