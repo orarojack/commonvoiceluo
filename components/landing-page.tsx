@@ -192,8 +192,8 @@ export default function LandingPage() {
         </div>
       </nav>
 
-      {/* Ultra-Modern Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50 min-h-screen flex items-center">
+      {/* Compact Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50 py-4">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute -top-40 -right-32 w-96 h-96 bg-gradient-to-br from-blue-400/30 to-purple-400/30 rounded-full blur-3xl animate-pulse"></div>
@@ -201,18 +201,18 @@ export default function LandingPage() {
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-indigo-400/20 to-blue-400/20 rounded-full blur-2xl animate-pulse" style={{animationDelay: '2s'}}></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+        <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 py-3">
           <div className="text-center">
             {/* Ultra-Modern Badge */}
-            <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-xl px-8 py-4 rounded-full border border-slate-200/50 shadow-2xl mb-8 hover:shadow-3xl transition-all duration-500 hover:scale-105">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center">
-                <Star className="w-5 h-5 text-white" />
+            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-xl px-4 py-2 rounded-full border border-slate-200/50 shadow-lg mb-4 hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="w-5 h-5 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center">
+                <Star className="w-3 h-3 text-white" />
               </div>
-              <span className="text-base font-bold text-slate-700 tracking-wide">Part of Mozilla Common Voice</span>
+              <span className="text-xs font-bold text-slate-700 tracking-wide">Part of Mozilla Common Voice</span>
             </div>
 
             {/* Ultra-Modern Main Heading */}
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight mb-8 leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4 leading-tight">
               <span className="bg-gradient-to-r from-slate-900 via-blue-600 to-indigo-600 bg-clip-text text-transparent animate-gradient">
                 Preserve Luo Language
               </span>
@@ -221,7 +221,7 @@ export default function LandingPage() {
             </h1>
 
             {/* Ultra-Modern Subtitle */}
-            <p className="text-2xl sm:text-3xl text-slate-600 mb-12 max-w-5xl mx-auto leading-relaxed font-light">
+            <p className="text-base sm:text-lg text-slate-600 mb-6 max-w-2xl mx-auto leading-relaxed font-medium">
               Join our community in building the world's largest open-source Luo voice dataset. 
               <span className="text-blue-600 font-semibold"> Contribute recordings</span>, 
               <span className="text-indigo-600 font-semibold"> validate others' work</span>, and 
@@ -229,41 +229,40 @@ export default function LandingPage() {
             </p>
 
             {/* Ultra-Modern CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-12">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
               <Link href="/auth/signup">
-                <Button size="lg" className="relative bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 text-white px-12 py-8 text-xl font-bold shadow-2xl hover:shadow-purple-500/25 transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 rounded-2xl overflow-hidden group">
-                  <span className="relative z-10">Start Contributing</span>
-                  <ArrowRight className="ml-4 h-6 w-6 group-hover:translate-x-2 transition-transform duration-500 relative z-10" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <Button size="lg" className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 text-white px-6 py-3 text-base font-bold shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 rounded-lg">
+                  Start Contributing
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="px-12 py-8 text-xl border-3 border-slate-300 hover:bg-slate-50 hover:border-slate-400 font-bold transition-all duration-500 hover:scale-105 rounded-2xl shadow-xl hover:shadow-2xl"
+                className="px-6 py-3 text-base border-2 border-slate-300 hover:bg-slate-50 hover:border-slate-400 font-bold transition-all duration-300 hover:scale-105 rounded-lg shadow-lg hover:shadow-xl"
                 onClick={() => setIsPlaying(!isPlaying)}
               >
-                <Play className="mr-4 h-6 w-6" />
+                <Play className="mr-2 h-4 w-4" />
                 Listen to Luo
               </Button>
             </div>
 
             {/* Ultra-Modern Audio Player Demo */}
             {isPlaying && (
-              <Card className="max-w-2xl mx-auto mb-12 shadow-2xl border-0 bg-white/90 backdrop-blur-xl rounded-3xl overflow-hidden">
-                <CardContent className="p-10">
-                  <div className="flex items-center space-x-8">
-                    <div className="w-20 h-20 bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 rounded-3xl flex items-center justify-center shadow-2xl animate-pulse">
-                      <Volume2 className="w-10 h-10 text-white" />
+              <Card className="max-w-md mx-auto mb-4 shadow-lg border-0 bg-white/90 backdrop-blur-xl rounded-xl overflow-hidden">
+                <CardContent className="p-4">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg animate-pulse">
+                      <Volume2 className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1">
-                      <p className="font-bold text-slate-900 text-2xl mb-2">Sample Luo Recording</p>
-                      <p className="text-slate-600 text-lg italic">"Neno mar Luo ni neno mokworo mag piny Kenya"</p>
-                      <div className="mt-4 flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                        <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
-                        <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
-                        <span className="text-sm text-slate-500 ml-2">Playing...</span>
+                      <p className="font-bold text-slate-900 text-lg mb-1">Sample Luo Recording</p>
+                      <p className="text-slate-600 text-sm italic">"Neno mar Luo ni neno mokworo mag piny Kenya"</p>
+                      <div className="mt-2 flex items-center space-x-1">
+                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                        <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
+                        <div className="w-1.5 h-1.5 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
+                        <span className="text-xs text-slate-500 ml-1">Playing...</span>
                       </div>
                     </div>
                   </div>
@@ -272,71 +271,71 @@ export default function LandingPage() {
             )}
 
             {/* Ultra-Modern Trust Indicators */}
-            <div className="flex flex-wrap items-center justify-center gap-8 text-slate-500">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-sm font-semibold">Open Source</span>
+            <div className="flex flex-wrap items-center justify-center gap-4 text-slate-500">
+              <div className="flex items-center gap-1">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-xs font-semibold">Open Source</span>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
-                <span className="text-sm font-semibold">Privacy First</span>
+              <div className="flex items-center gap-1">
+                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                <span className="text-xs font-semibold">Privacy First</span>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
-                <span className="text-sm font-semibold">Community Driven</span>
+              <div className="flex items-center gap-1">
+                <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                <span className="text-xs font-semibold">Community Driven</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Ultra-Modern Stats Section */}
-      <section id="stats" className="py-20 bg-gradient-to-br from-white via-slate-50 to-blue-50 relative overflow-hidden">
+      {/* Compact Stats Section */}
+      <section id="stats" className="py-6 bg-gradient-to-br from-white via-slate-50 to-blue-50 relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-indigo-400/20 rounded-full blur-2xl animate-pulse"></div>
           <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-2xl animate-pulse" style={{animationDelay: '1s'}}></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-5xl lg:text-6xl font-black text-slate-900 mb-6">
+          <div className="text-center mb-6">
+            <h2 className="text-3xl lg:text-4xl font-black text-slate-900 mb-3">
               <span className="bg-gradient-to-r from-slate-900 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
                 Our Impact
               </span>
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto font-light leading-relaxed">
+            <p className="text-base text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">
               Join thousands of contributors making a real difference in Luo language preservation
             </p>
           </div>
 
-          {/* Enhanced Stats Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          {/* Compact Stats Grid */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {stats.map((stat, index) => (
               <div key={index} className="group text-center">
-                <div className="relative mb-6">
+                <div className="relative mb-3">
                   {/* Animated Background Circle */}
-                  <div className="absolute inset-0 w-24 h-24 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 rounded-full mx-auto group-hover:scale-110 transition-all duration-500"></div>
+                  <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 rounded-full mx-auto group-hover:scale-110 transition-all duration-500"></div>
                   
                   {/* Main Stat Number */}
-                  <div className="relative text-5xl lg:text-6xl font-black bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent mb-3 group-hover:scale-105 transition-all duration-300">
+                  <div className="relative text-3xl lg:text-4xl font-black bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2 group-hover:scale-105 transition-all duration-300">
                     {stat.number}
                   </div>
                   
                   {/* Animated Underline */}
-                  <div className="w-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto group-hover:w-16 transition-all duration-500 rounded-full"></div>
+                  <div className="w-0 h-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto group-hover:w-12 transition-all duration-500 rounded-full"></div>
                 </div>
                 
                 {/* Stat Label */}
-                <div className="text-slate-600 font-bold text-lg group-hover:text-slate-800 transition-colors duration-300">
+                <div className="text-slate-600 font-bold text-sm group-hover:text-slate-800 transition-colors duration-300">
                   {stat.label}
                 </div>
                 
                 {/* Progress Indicator */}
-                <div className="mt-4 w-full bg-slate-200 rounded-full h-2 overflow-hidden">
+                <div className="mt-2 w-full bg-slate-200 rounded-full h-1 overflow-hidden">
                   <div 
-                    className="h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-1000 ease-out"
+                    className="h-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-1000 ease-out"
                     style={{ 
                       width: `${(index + 1) * 25}%`,
                       animationDelay: `${index * 0.2}s`
@@ -348,114 +347,101 @@ export default function LandingPage() {
           </div>
 
           {/* Call to Action */}
-          <div className="text-center mt-16">
-            <p className="text-lg text-slate-600 mb-6 font-medium">
+          <div className="text-center mt-6">
+            <p className="text-sm text-slate-600 mb-3 font-medium">
               Be part of our growing community
             </p>
             <Link href="/auth/signup">
-              <Button size="lg" className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 text-white px-10 py-6 text-lg font-bold shadow-2xl hover:shadow-purple-500/25 transition-all duration-500 transform hover:-translate-y-1 hover:scale-105 rounded-2xl">
+              <Button size="lg" className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 text-white px-6 py-3 text-base font-bold shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 rounded-lg">
                 Join the Movement
-                <ArrowRight className="ml-3 h-5 w-5" />
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Ultra-Modern Features Section */}
-      <section id="features" className="py-20 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
+      {/* Compact Features Section */}
+      <section id="features" className="py-6 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-gradient-to-br from-indigo-400/15 to-purple-400/15 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-1/3 left-1/4 w-56 h-56 bg-gradient-to-br from-blue-400/15 to-indigo-400/15 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1.5s'}}></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Enhanced Section Header */}
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-xl px-8 py-4 rounded-full border border-slate-200/50 shadow-xl mb-8">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center">
-                <Zap className="w-5 h-5 text-white" />
+        <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6">
+          {/* Compact Section Header */}
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-xl px-4 py-2 rounded-full border border-slate-200/50 shadow-lg mb-4">
+              <div className="w-5 h-5 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center">
+                <Zap className="w-3 h-3 text-white" />
               </div>
-              <span className="text-base font-bold text-slate-700 tracking-wide">How It Works</span>
+              <span className="text-xs font-bold text-slate-700 tracking-wide">How It Works</span>
             </div>
             
-            <h2 className="text-5xl lg:text-6xl font-black text-slate-900 mb-6">
+            <h2 className="text-3xl lg:text-4xl font-black text-slate-900 mb-3">
               <span className="bg-gradient-to-r from-slate-900 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
                 Simple Steps,
               </span>
               <br />
               <span className="text-slate-700">Big Impact</span>
             </h2>
-            <p className="text-xl text-slate-600 max-w-4xl mx-auto font-light leading-relaxed">
+            <p className="text-base text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">
               Our platform makes it incredibly easy to contribute to Luo language preservation through voice technology. 
               <span className="text-blue-600 font-semibold"> Just follow these simple steps</span> to make a difference.
             </p>
           </div>
 
-          {/* Enhanced Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+          {/* Compact Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {features.map((feature, index) => {
               const Icon = feature.icon
               return (
-                <Card key={index} className="group relative bg-white/80 backdrop-blur-xl border-2 border-slate-200/50 hover:border-blue-300/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 rounded-3xl overflow-hidden">
-                  {/* Animated Background */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-indigo-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
+                <Card key={index} className="group relative bg-white/80 backdrop-blur-xl border border-slate-200/50 hover:border-blue-300/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 rounded-xl overflow-hidden">
                   {/* Step Number */}
-                  <div className="absolute top-6 right-6 w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300">
-                    <span className="text-white font-black text-lg">{index + 1}</span>
+                  <div className="absolute top-3 right-3 w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-all duration-300">
+                    <span className="text-white font-black text-sm">{index + 1}</span>
                   </div>
 
-                  <CardContent className="relative p-8 text-center">
-                    {/* Enhanced Icon Container */}
-                    <div className="relative mb-6">
-                      <div className="w-24 h-24 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-xl group-hover:shadow-2xl transition-all duration-500 group-hover:scale-110">
-                        <Icon className={`w-12 h-12 ${feature.color} group-hover:scale-110 transition-transform duration-300`} />
+                  <CardContent className="relative p-4 text-center">
+                    {/* Compact Icon Container */}
+                    <div className="relative mb-3">
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl flex items-center justify-center mx-auto mb-2 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                        <Icon className={`w-6 h-6 ${feature.color} group-hover:scale-110 transition-transform duration-300`} />
                       </div>
-                      
-                      {/* Animated Ring */}
-                      <div className="absolute inset-0 w-24 h-24 border-2 border-blue-200 rounded-3xl mx-auto group-hover:border-blue-400 group-hover:scale-125 transition-all duration-500"></div>
                     </div>
                     
-                    {/* Enhanced Content */}
-                    <h3 className="text-2xl font-black text-slate-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">
+                    {/* Compact Content */}
+                    <h3 className="text-lg font-black text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
                       {feature.title}
                     </h3>
-                    <p className="text-slate-600 text-lg leading-relaxed font-medium group-hover:text-slate-700 transition-colors duration-300">
+                    <p className="text-slate-600 text-sm leading-relaxed font-medium group-hover:text-slate-700 transition-colors duration-300">
                       {feature.description}
                     </p>
-                    
-                    {/* Animated Arrow for Next Step */}
-                    {index < features.length - 1 && (
-                      <div className="hidden lg:block absolute -right-5 top-1/2 transform -translate-y-1/2">
-                        <ArrowRight className="w-8 h-8 text-slate-300 group-hover:text-blue-400 group-hover:translate-x-2 transition-all duration-300" />
-                      </div>
-                    )}
                   </CardContent>
                 </Card>
               )
             })}
           </div>
 
-          {/* Enhanced Call to Action */}
-          <div className="text-center mt-20">
-            <div className="bg-gradient-to-r from-blue-600/10 via-indigo-600/10 to-purple-600/10 rounded-3xl p-12 border border-slate-200/50 backdrop-blur-xl">
-              <h3 className="text-3xl font-black text-slate-900 mb-4">
+          {/* Compact Call to Action */}
+          <div className="text-center mt-6">
+            <div className="bg-gradient-to-r from-blue-600/10 via-indigo-600/10 to-purple-600/10 rounded-xl p-6 border border-slate-200/50 backdrop-blur-xl">
+              <h3 className="text-xl font-black text-slate-900 mb-2">
                 Ready to Get Started?
               </h3>
-              <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto font-medium">
+              <p className="text-sm text-slate-600 mb-4 max-w-xl mx-auto font-medium">
                 Join our community and start contributing to Luo language preservation today
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <Link href="/auth/signup">
-                  <Button size="lg" className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 text-white px-12 py-6 text-xl font-bold shadow-2xl hover:shadow-purple-500/25 transition-all duration-500 transform hover:-translate-y-1 hover:scale-105 rounded-2xl">
+                  <Button size="lg" className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 text-white px-6 py-3 text-base font-bold shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 rounded-lg">
                     Start Contributing
-                    <ArrowRight className="ml-3 h-6 w-6" />
+                    <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
                 <Link href="/auth/signin">
-                  <Button variant="outline" size="lg" className="px-12 py-6 text-xl border-2 border-slate-300 hover:bg-slate-50 hover:border-slate-400 font-bold transition-all duration-500 hover:scale-105 rounded-2xl shadow-xl hover:shadow-2xl">
+                  <Button variant="outline" size="lg" className="px-6 py-3 text-base border-2 border-slate-300 hover:bg-slate-50 hover:border-slate-400 font-bold transition-all duration-300 hover:scale-105 rounded-lg shadow-lg hover:shadow-xl">
                     Already Have an Account?
                   </Button>
                 </Link>
