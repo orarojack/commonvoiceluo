@@ -197,7 +197,7 @@ export default function SignInPage() {
                     </Button>
                   </form>
 
-                  <div className="bg-orange-50/50 border border-orange-200 p-4 rounded-xl">
+                  {/* <div className="bg-orange-50/50 border border-orange-200 p-4 rounded-xl">
                     <p className="text-sm text-orange-800">
                       <strong>Demo Admin Credentials:</strong>
                       <br />
@@ -205,7 +205,7 @@ export default function SignInPage() {
                       <br />
                       Password: admin123
                     </p>
-                  </div>
+                  </div> */}
                 </CardContent>
               </Card>
             </TabsContent>
@@ -417,7 +417,7 @@ export default function SignInPage() {
                 </Button>
               </form>
 
-              <div className="bg-blue-50/50 border border-blue-200 p-4 rounded-xl">
+              {/* <div className="bg-blue-50/50 border border-blue-200 p-4 rounded-xl">
                 <p className="text-sm text-blue-800">
                   <strong>Demo Credentials:</strong>
                   <br />
@@ -427,7 +427,7 @@ export default function SignInPage() {
                   <br />
                   Pending: pending@example.com / pending123
                 </p>
-              </div>
+              </div> */}
 
               <div className="flex justify-between text-sm pt-4">
                 <Button

@@ -429,17 +429,20 @@ export default function SpeakPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 pb-6">
-      {/* Header Section - Responsive */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 mb-4 bg-white rounded-lg p-3 sm:p-4 shadow-lg border border-gray-200">
-        <div className="flex items-center gap-2 sm:gap-4">
-          <div className="flex items-center space-x-2 bg-gradient-to-r from-red-500 to-red-600 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-md">
-            <Mic className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+    <div className="max-w-7xl mx-auto px-2 sm:px-3 md:px-4 lg:px-6 xl:px-8 pb-4 sm:pb-6">
+      {/* Header Section - Fully Responsive */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 sm:gap-3 lg:gap-4 mb-3 sm:mb-4 bg-white rounded-lg p-2 sm:p-3 md:p-4 shadow-lg border border-gray-200 overflow-hidden">
+        {/* Left: Badge + Title */}
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-red-500 to-red-600 px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full shadow-md whitespace-nowrap">
+            <Mic className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-white flex-shrink-0" />
             <span className="text-white font-semibold text-xs sm:text-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>Recording</span>
           </div>
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900" style={{ fontFamily: 'Poppins, sans-serif' }}>Speak</h1>
+          <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 whitespace-nowrap" style={{ fontFamily: 'Poppins, sans-serif' }}>Speak</h1>
         </div>
-        <div className="text-center sm:text-right w-full sm:max-w-xs md:max-w-md bg-blue-50 p-3 sm:p-4 rounded-xl border border-blue-200">
+        
+        {/* Right: Instructions */}
+        <div className="text-center sm:text-right w-full sm:w-auto sm:max-w-xs md:max-w-sm lg:max-w-md bg-blue-50 p-2 sm:p-3 md:p-4 rounded-lg sm:rounded-xl border border-blue-200">
           <p className="text-xs sm:text-sm text-blue-800 font-bold leading-relaxed" style={{ fontFamily: 'Poppins, sans-serif' }}>
             Click mic, read aloud clearly, then submit.
           </p>

@@ -10,8 +10,15 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Common Voice Luo",
-  description: "Voice contribution and validation platform",
-    generator: 'v0.dev'
+  description: "Voice contribution and validation platform for Luo language - Mozilla Common Voice",
+  generator: 'v0.dev',
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/apple-icon.png',
+  },
 }
 
 export default function RootLayout({
