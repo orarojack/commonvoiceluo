@@ -19,7 +19,15 @@ import {
   Shield,
   Zap,
   Menu,
-  X
+  X,
+  Mail,
+  Phone,
+  MessageCircle,
+  HelpCircle,
+  FileText,
+  Github,
+  Twitter,
+  Linkedin
 } from "lucide-react"
 
 export default function LandingPage() {
@@ -86,7 +94,7 @@ export default function LandingPage() {
               <div className="w-12 h-12 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-xl group-hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
                 <span className="text-white font-bold text-xl">CV</span>
               </div>
-              <div>
+              <div className="hidden md:block">
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-slate-900 via-blue-600 to-indigo-600 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:to-indigo-600 transition-all duration-300">
                   Common Voice Luo
                 </h1>
@@ -184,119 +192,275 @@ export default function LandingPage() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      {/* Ultra-Modern Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50 min-h-screen flex items-center">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute -top-40 -right-32 w-96 h-96 bg-gradient-to-br from-blue-400/30 to-purple-400/30 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute -bottom-40 -left-32 w-96 h-96 bg-gradient-to-br from-purple-400/30 to-pink-400/30 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-indigo-400/20 to-blue-400/20 rounded-full blur-2xl animate-pulse" style={{animationDelay: '2s'}}></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="text-center">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-white px-6 py-3 rounded-full border border-slate-200 shadow-sm mb-6">
-              <Star className="w-5 h-5 text-blue-600" />
-              <span className="text-sm font-semibold text-slate-700">Part of Mozilla Common Voice</span>
+            {/* Ultra-Modern Badge */}
+            <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-xl px-8 py-4 rounded-full border border-slate-200/50 shadow-2xl mb-8 hover:shadow-3xl transition-all duration-500 hover:scale-105">
+              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center">
+                <Star className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-base font-bold text-slate-700 tracking-wide">Part of Mozilla Common Voice</span>
             </div>
 
-            {/* Main Heading */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-              <span className="bg-gradient-to-r from-slate-900 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            {/* Ultra-Modern Main Heading */}
+            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight mb-8 leading-tight">
+              <span className="bg-gradient-to-r from-slate-900 via-blue-600 to-indigo-600 bg-clip-text text-transparent animate-gradient">
                 Preserve Luo Language
               </span>
               <br />
-              <span className="text-slate-700">Through Voice Technology</span>
+              <span className="text-slate-700 font-light">Through Voice Technology</span>
             </h1>
 
-            {/* Subtitle */}
-            <p className="text-xl sm:text-2xl text-slate-600 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
+            {/* Ultra-Modern Subtitle */}
+            <p className="text-2xl sm:text-3xl text-slate-600 mb-12 max-w-5xl mx-auto leading-relaxed font-light">
               Join our community in building the world's largest open-source Luo voice dataset. 
-              Contribute recordings, validate others' work, and help preserve this beautiful language for future generations.
+              <span className="text-blue-600 font-semibold"> Contribute recordings</span>, 
+              <span className="text-indigo-600 font-semibold"> validate others' work</span>, and 
+              <span className="text-purple-600 font-semibold"> help preserve</span> this beautiful language for future generations.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
+            {/* Ultra-Modern CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-12">
               <Link href="/auth/signup">
-                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-10 py-6 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                  Start Contributing
-                  <ArrowRight className="ml-3 h-5 w-5" />
+                <Button size="lg" className="relative bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 text-white px-12 py-8 text-xl font-bold shadow-2xl hover:shadow-purple-500/25 transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 rounded-2xl overflow-hidden group">
+                  <span className="relative z-10">Start Contributing</span>
+                  <ArrowRight className="ml-4 h-6 w-6 group-hover:translate-x-2 transition-transform duration-500 relative z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </Button>
               </Link>
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="px-10 py-6 text-lg border-2 border-slate-300 hover:bg-slate-50 hover:border-slate-400 font-semibold transition-all duration-300"
+                className="px-12 py-8 text-xl border-3 border-slate-300 hover:bg-slate-50 hover:border-slate-400 font-bold transition-all duration-500 hover:scale-105 rounded-2xl shadow-xl hover:shadow-2xl"
                 onClick={() => setIsPlaying(!isPlaying)}
               >
-                <Play className="mr-3 h-5 w-5" />
+                <Play className="mr-4 h-6 w-6" />
                 Listen to Luo
               </Button>
             </div>
 
-            {/* Audio Player Demo */}
+            {/* Ultra-Modern Audio Player Demo */}
             {isPlaying && (
-              <Card className="max-w-lg mx-auto mb-8 shadow-xl border-0 bg-white">
-                <CardContent className="p-8">
-                  <div className="flex items-center space-x-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center shadow-lg">
-                      <Volume2 className="w-8 h-8 text-white" />
+              <Card className="max-w-2xl mx-auto mb-12 shadow-2xl border-0 bg-white/90 backdrop-blur-xl rounded-3xl overflow-hidden">
+                <CardContent className="p-10">
+                  <div className="flex items-center space-x-8">
+                    <div className="w-20 h-20 bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 rounded-3xl flex items-center justify-center shadow-2xl animate-pulse">
+                      <Volume2 className="w-10 h-10 text-white" />
                     </div>
                     <div className="flex-1">
-                      <p className="font-semibold text-slate-900 text-lg">Sample Luo Recording</p>
-                      <p className="text-slate-600 mt-1">"Neno mar Luo ni neno mokworo mag piny Kenya"</p>
+                      <p className="font-bold text-slate-900 text-2xl mb-2">Sample Luo Recording</p>
+                      <p className="text-slate-600 text-lg italic">"Neno mar Luo ni neno mokworo mag piny Kenya"</p>
+                      <div className="mt-4 flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                        <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
+                        <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
+                        <span className="text-sm text-slate-500 ml-2">Playing...</span>
+                      </div>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             )}
+
+            {/* Ultra-Modern Trust Indicators */}
+            <div className="flex flex-wrap items-center justify-center gap-8 text-slate-500">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-sm font-semibold">Open Source</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                <span className="text-sm font-semibold">Privacy First</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                <span className="text-sm font-semibold">Community Driven</span>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
+      {/* Ultra-Modern Stats Section */}
+      <section id="stats" className="py-20 bg-gradient-to-br from-white via-slate-50 to-blue-50 relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute -top-40 -right-32 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-40 -left-32 w-80 h-80 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-indigo-400/20 rounded-full blur-2xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-2xl animate-pulse" style={{animationDelay: '1s'}}></div>
         </div>
-      </section>
 
-      {/* Stats Section */}
-      <section id="stats" className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-slate-600 font-semibold text-lg">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section id="features" className="py-12 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
-              How It Works
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-5xl lg:text-6xl font-black text-slate-900 mb-6">
+              <span className="bg-gradient-to-r from-slate-900 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                Our Impact
+              </span>
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto font-light">
-              Our platform makes it easy to contribute to Luo language preservation through voice technology
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto font-light leading-relaxed">
+              Join thousands of contributors making a real difference in Luo language preservation
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Enhanced Stats Grid */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+            {stats.map((stat, index) => (
+              <div key={index} className="group text-center">
+                <div className="relative mb-6">
+                  {/* Animated Background Circle */}
+                  <div className="absolute inset-0 w-24 h-24 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 rounded-full mx-auto group-hover:scale-110 transition-all duration-500"></div>
+                  
+                  {/* Main Stat Number */}
+                  <div className="relative text-5xl lg:text-6xl font-black bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent mb-3 group-hover:scale-105 transition-all duration-300">
+                    {stat.number}
+                  </div>
+                  
+                  {/* Animated Underline */}
+                  <div className="w-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto group-hover:w-16 transition-all duration-500 rounded-full"></div>
+                </div>
+                
+                {/* Stat Label */}
+                <div className="text-slate-600 font-bold text-lg group-hover:text-slate-800 transition-colors duration-300">
+                  {stat.label}
+                </div>
+                
+                {/* Progress Indicator */}
+                <div className="mt-4 w-full bg-slate-200 rounded-full h-2 overflow-hidden">
+                  <div 
+                    className="h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-1000 ease-out"
+                    style={{ 
+                      width: `${(index + 1) * 25}%`,
+                      animationDelay: `${index * 0.2}s`
+                    }}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Call to Action */}
+          <div className="text-center mt-16">
+            <p className="text-lg text-slate-600 mb-6 font-medium">
+              Be part of our growing community
+            </p>
+            <Link href="/auth/signup">
+              <Button size="lg" className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 text-white px-10 py-6 text-lg font-bold shadow-2xl hover:shadow-purple-500/25 transition-all duration-500 transform hover:-translate-y-1 hover:scale-105 rounded-2xl">
+                Join the Movement
+                <ArrowRight className="ml-3 h-5 w-5" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Ultra-Modern Features Section */}
+      <section id="features" className="py-20 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-gradient-to-br from-indigo-400/15 to-purple-400/15 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/3 left-1/4 w-56 h-56 bg-gradient-to-br from-blue-400/15 to-indigo-400/15 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1.5s'}}></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Enhanced Section Header */}
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-xl px-8 py-4 rounded-full border border-slate-200/50 shadow-xl mb-8">
+              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center">
+                <Zap className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-base font-bold text-slate-700 tracking-wide">How It Works</span>
+            </div>
+            
+            <h2 className="text-5xl lg:text-6xl font-black text-slate-900 mb-6">
+              <span className="bg-gradient-to-r from-slate-900 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                Simple Steps,
+              </span>
+              <br />
+              <span className="text-slate-700">Big Impact</span>
+            </h2>
+            <p className="text-xl text-slate-600 max-w-4xl mx-auto font-light leading-relaxed">
+              Our platform makes it incredibly easy to contribute to Luo language preservation through voice technology. 
+              <span className="text-blue-600 font-semibold"> Just follow these simple steps</span> to make a difference.
+            </p>
+          </div>
+
+          {/* Enhanced Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
             {features.map((feature, index) => {
               const Icon = feature.icon
               return (
-                <Card key={index} className={`${feature.bgColor} ${feature.borderColor} border-2 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-white`}>
-                  <CardContent className="p-6 text-center">
-                    <div className={`w-20 h-20 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-lg`}>
-                      <Icon className={`w-10 h-10 ${feature.color}`} />
+                <Card key={index} className="group relative bg-white/80 backdrop-blur-xl border-2 border-slate-200/50 hover:border-blue-300/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 rounded-3xl overflow-hidden">
+                  {/* Animated Background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-indigo-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  {/* Step Number */}
+                  <div className="absolute top-6 right-6 w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300">
+                    <span className="text-white font-black text-lg">{index + 1}</span>
+                  </div>
+
+                  <CardContent className="relative p-8 text-center">
+                    {/* Enhanced Icon Container */}
+                    <div className="relative mb-6">
+                      <div className="w-24 h-24 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-xl group-hover:shadow-2xl transition-all duration-500 group-hover:scale-110">
+                        <Icon className={`w-12 h-12 ${feature.color} group-hover:scale-110 transition-transform duration-300`} />
+                      </div>
+                      
+                      {/* Animated Ring */}
+                      <div className="absolute inset-0 w-24 h-24 border-2 border-blue-200 rounded-3xl mx-auto group-hover:border-blue-400 group-hover:scale-125 transition-all duration-500"></div>
                     </div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3">{feature.title}</h3>
-                    <p className="text-slate-600 text-lg leading-relaxed">{feature.description}</p>
+                    
+                    {/* Enhanced Content */}
+                    <h3 className="text-2xl font-black text-slate-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">
+                      {feature.title}
+                    </h3>
+                    <p className="text-slate-600 text-lg leading-relaxed font-medium group-hover:text-slate-700 transition-colors duration-300">
+                      {feature.description}
+                    </p>
+                    
+                    {/* Animated Arrow for Next Step */}
+                    {index < features.length - 1 && (
+                      <div className="hidden lg:block absolute -right-5 top-1/2 transform -translate-y-1/2">
+                        <ArrowRight className="w-8 h-8 text-slate-300 group-hover:text-blue-400 group-hover:translate-x-2 transition-all duration-300" />
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               )
             })}
+          </div>
+
+          {/* Enhanced Call to Action */}
+          <div className="text-center mt-20">
+            <div className="bg-gradient-to-r from-blue-600/10 via-indigo-600/10 to-purple-600/10 rounded-3xl p-12 border border-slate-200/50 backdrop-blur-xl">
+              <h3 className="text-3xl font-black text-slate-900 mb-4">
+                Ready to Get Started?
+              </h3>
+              <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto font-medium">
+                Join our community and start contributing to Luo language preservation today
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <Link href="/auth/signup">
+                  <Button size="lg" className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 text-white px-12 py-6 text-xl font-bold shadow-2xl hover:shadow-purple-500/25 transition-all duration-500 transform hover:-translate-y-1 hover:scale-105 rounded-2xl">
+                    Start Contributing
+                    <ArrowRight className="ml-3 h-6 w-6" />
+                  </Button>
+                </Link>
+                <Link href="/auth/signin">
+                  <Button variant="outline" size="lg" className="px-12 py-6 text-xl border-2 border-slate-300 hover:bg-slate-50 hover:border-slate-400 font-bold transition-all duration-500 hover:scale-105 rounded-2xl shadow-xl hover:shadow-2xl">
+                    Already Have an Account?
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -373,73 +537,228 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-12 bg-gradient-to-r from-blue-600 to-indigo-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-            Ready to Make a Difference?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed font-light">
-            Join thousands of contributors worldwide in preserving Luo language through voice technology
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+      {/* Compact CTA Section */}
+      <section className="relative py-8 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 overflow-hidden">
+        {/* Minimal Background Elements */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-gradient-to-br from-white/10 to-blue-400/20 rounded-full blur-2xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 left-1/4 w-32 h-32 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-2xl animate-pulse" style={{animationDelay: '1s'}}></div>
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          {/* Compact Header */}
+          <div className="mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-3 leading-tight">
+              <span className="bg-gradient-to-r from-white via-blue-100 to-indigo-100 bg-clip-text text-transparent animate-gradient">
+                Ready to Make a Difference?
+              </span>
+            </h2>
+            <p className="text-lg text-blue-100 mb-6 max-w-2xl mx-auto font-medium">
+              Join our community in preserving Luo language through voice technology
+            </p>
+          </div>
+
+          {/* Compact CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <Link href="/auth/signup">
-              <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-slate-50 px-12 py-6 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                Start Contributing Today
-                <ArrowRight className="ml-3 h-5 w-5" />
+              <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 rounded-xl">
+                Start Contributing
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
             <Link href="/auth/signin">
-              <Button size="lg" className="bg-white/10 border-2 border-white text-white hover:bg-white hover:text-blue-600 px-12 py-6 text-lg font-semibold transition-all duration-300">
-                Already Have an Account?
+              <Button size="lg" variant="outline" className="bg-white/10 border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-bold transition-all duration-300 rounded-xl">
+                Sign In
               </Button>
             </Link>
+          </div>
+
+          {/* Compact Trust Indicators */}
+          <div className="flex items-center justify-center gap-8 text-sm">
+            <div className="flex items-center gap-2">
+              <Users className="w-4 h-4 text-white" />
+              <span className="text-white font-semibold">50+ Contributors</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Mic className="w-4 h-4 text-white" />
+              <span className="text-white font-semibold">1,200+ Recordings</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Shield className="w-4 h-4 text-white" />
+              <span className="text-white font-semibold">Privacy First</span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-white py-12">
+      {/* Enhanced Footer */}
+      <footer className="bg-slate-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="col-span-1 md:col-span-2">
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
-                  <span className="text-white font-bold text-xl">CV</span>
+          {/* Main Footer Content */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+            {/* Brand Section */}
+            <div className="lg:col-span-2">
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center shadow-xl">
+                  <span className="text-white font-bold text-2xl">CV</span>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold">Common Voice Luo</h3>
-                  <p className="text-slate-400 text-sm">mozilla</p>
+                  <h3 className="text-3xl font-bold">Common Voice Luo</h3>
+                  <p className="text-slate-400 text-sm font-medium">mozilla</p>
                 </div>
               </div>
-              <p className="text-slate-400 mb-4 max-w-md leading-relaxed">
+              <p className="text-slate-400 mb-6 max-w-md leading-relaxed text-lg">
                 Preserving Luo language through open-source voice technology. 
                 Part of Mozilla's Common Voice initiative.
               </p>
+              
+              {/* Social Links */}
+              <div className="flex items-center space-x-4">
+                <a href="https://github.com/mozilla/common-voice" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-slate-700 transition-colors duration-300">
+                  <Github className="w-5 h-5 text-white" />
+                </a>
+                <a href="https://twitter.com/mozcommonvoice" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-slate-700 transition-colors duration-300">
+                  <Twitter className="w-5 h-5 text-white" />
+                </a>
+                <a href="https://linkedin.com/company/mozilla" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center hover:bg-slate-700 transition-colors duration-300">
+                  <Linkedin className="w-5 h-5 text-white" />
+                </a>
+              </div>
             </div>
             
+            {/* Platform Section */}
             <div>
-              <h4 className="font-bold text-lg mb-4">Platform</h4>
-              <ul className="space-y-2 text-slate-400">
-                <li><Link href="/auth/signup" className="hover:text-white transition-colors">Sign Up</Link></li>
-                <li><Link href="/auth/signin" className="hover:text-white transition-colors">Sign In</Link></li>
-                <li><Link href="/dashboard" className="hover:text-white transition-colors">Dashboard</Link></li>
+              <h4 className="font-bold text-xl mb-6 flex items-center gap-2">
+                <Globe className="w-5 h-5 text-blue-400" />
+                Platform
+              </h4>
+              <ul className="space-y-3 text-slate-400">
+                <li><Link href="/auth/signup" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                  <ArrowRight className="w-4 h-4" />
+                  Sign Up
+                </Link></li>
+                <li><Link href="/auth/signin" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                  <ArrowRight className="w-4 h-4" />
+                  Sign In
+                </Link></li>
+                <li><Link href="/dashboard" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                  <ArrowRight className="w-4 h-4" />
+                  Dashboard
+                </Link></li>
+                <li><Link href="/speak" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                  <Mic className="w-4 h-4" />
+                  Contribute
+                </Link></li>
+                <li><Link href="/listen" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                  <Headphones className="w-4 h-4" />
+                  Validate
+                </Link></li>
               </ul>
             </div>
             
+            {/* Help & Support Section */}
             <div>
-              <h4 className="font-bold text-lg mb-4">Resources</h4>
-              <ul className="space-y-2 text-slate-400">
-                <li><a href="https://commonvoice.mozilla.org" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Common Voice</a></li>
-                <li><a href="https://mozilla.org" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Mozilla</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Documentation</a></li>
+              <h4 className="font-bold text-xl mb-6 flex items-center gap-2">
+                <HelpCircle className="w-5 h-5 text-green-400" />
+                Help & Support
+              </h4>
+              <ul className="space-y-3 text-slate-400">
+                <li><a href="mailto:support@commonvoice.mozilla.org" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                  <Mail className="w-4 h-4" />
+                  Email Support
+                </a></li>
+                <li><a href="https://discourse.mozilla.org/c/common-voice" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                  <MessageCircle className="w-4 h-4" />
+                  Community Forum
+                </a></li>
+                <li><a href="https://commonvoice.mozilla.org/help" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                  <FileText className="w-4 h-4" />
+                  Documentation
+                </a></li>
+                <li><a href="https://github.com/mozilla/common-voice/issues" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                  <Github className="w-4 h-4" />
+                  Report Issues
+                </a></li>
+                <li><a href="https://commonvoice.mozilla.org/faq" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                  <HelpCircle className="w-4 h-4" />
+                  FAQ
+                </a></li>
+              </ul>
+            </div>
+            
+            {/* Contact & Resources Section */}
+            <div>
+              <h4 className="font-bold text-xl mb-6 flex items-center gap-2">
+                <Mail className="w-5 h-5 text-purple-400" />
+                Contact & Resources
+              </h4>
+              <ul className="space-y-3 text-slate-400">
+                <li><a href="https://commonvoice.mozilla.org" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                  <Globe className="w-4 h-4" />
+                  Common Voice
+                </a></li>
+                <li><a href="https://mozilla.org" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                  <Shield className="w-4 h-4" />
+                  Mozilla Foundation
+                </a></li>
+                <li><a href="https://mozilla.org/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                  <Shield className="w-4 h-4" />
+                  Privacy Policy
+                </a></li>
+                <li><a href="https://mozilla.org/about/legal" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                  <FileText className="w-4 h-4" />
+                  Terms of Service
+                </a></li>
+                <li><a href="https://mozilla.org/about/contact" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                  <Phone className="w-4 h-4" />
+                  Contact Mozilla
+                </a></li>
               </ul>
             </div>
           </div>
           
-          <div className="border-t border-slate-800 mt-8 pt-6 text-center text-slate-400">
-            <p>&copy; 2025 Common Voice Luo. Part of Mozilla Common Voice initiative.</p>
+          {/* Newsletter Signup */}
+          <div className="bg-slate-800/50 rounded-2xl p-8 mb-12 border border-slate-700">
+            <div className="text-center">
+              <h3 className="text-2xl font-bold text-white mb-4">Stay Updated</h3>
+              <p className="text-slate-400 mb-6 max-w-2xl mx-auto">
+                Get the latest updates on Luo language preservation and Common Voice initiatives
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+                <input 
+                  type="email" 
+                  placeholder="Enter your email" 
+                  className="flex-1 px-4 py-3 bg-slate-700 border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 transition-colors duration-300"
+                />
+                <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-3 font-bold rounded-xl transition-all duration-300">
+                  Subscribe
+                </Button>
+              </div>
+            </div>
+          </div>
+          
+          {/* Footer Bottom */}
+          <div className="border-t border-slate-800 pt-8">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="text-slate-400 text-center md:text-left">
+                <p>&copy; 2025 Common Voice Luo. Part of Mozilla Common Voice initiative.</p>
+                <p className="text-sm mt-1">Built with ❤️ for language preservation</p>
+              </div>
+              <div className="flex items-center gap-6 text-sm text-slate-400">
+                <span className="flex items-center gap-2">
+                  <Shield className="w-4 h-4 text-green-400" />
+                  Privacy First
+                </span>
+                <span className="flex items-center gap-2">
+                  <Globe className="w-4 h-4 text-blue-400" />
+                  Open Source
+                </span>
+                <span className="flex items-center gap-2">
+                  <Users className="w-4 h-4 text-purple-400" />
+                  Community Driven
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
